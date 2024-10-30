@@ -81,6 +81,10 @@ app.component("product-display", {
     addToCart() {
       this.$emit("add-to-cart", this.selectedVariant, this.name);
     },
+
+    addReview(review) {
+      alert("Review submitted: " + JSON.stringify(review));
+    },
   },
 
   computed: {
@@ -93,6 +97,7 @@ app.component("product-display", {
   },
 
   template: `
+  <div>
   <div class="lg:grid lg:grid-cols-8 lg:items-start lg:gap-x-8">
         <!-- Image gallery -->
         <product-images :initial-thumbnail="selectedVariant.image"
@@ -117,5 +122,9 @@ app.component("product-display", {
             </div>
         </div>
     </div>
+   
+    <review-form @add-review="addReview"></review-form>
+  </div>
+    
   `,
 });
