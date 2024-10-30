@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Product</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,container-queries"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <app-header :cart="cart" @open-cart="openCart = !openCart"></app-header>
+
+        <cart-drawer :open="openCart" @close="openCart = false" :cart="cart"></cart-drawer>
+
+        <div class="bg-white">
+            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                <product-display :premium-member="premiumMember" @add-to-cart="addToCart"></product-display>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import app -->
+    <script src="./main.js"></script>
+    <script src="./components/AppHeader.js"></script>
+    <script src="./components/CartDrawer.js"></script>
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductVariants.js"></script>
+    <script src="./components/ProductBadges.js"></script>
+    <script src="./components/ProductInfo.js"></script>
+    <script src="./components/ProductImages.js"></script>
+    <script src="./components/ProductAtc.js"></script>
+
+
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+
+</html>
