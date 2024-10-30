@@ -79,7 +79,7 @@ app.component("product-display", {
     },
 
     addToCart() {
-      this.$emit("add-to-cart", this.selectedVariant);
+      this.$emit("add-to-cart", this.selectedVariant, this.name);
     },
   },
 

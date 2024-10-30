@@ -9,8 +9,12 @@ const app = Vue.createApp({
   },
 
   methods: {
-    addToCart(productId) {
-      this.cart.push(productId);
+    addToCart(productVariant, productName) {
+      this.cart.push({ ...productVariant, name: productName });
+    },
+
+    removeCartItem(productId) {
+      this.cart = this.cart.filter((item) => item.id !== productId);
     },
   },
 });

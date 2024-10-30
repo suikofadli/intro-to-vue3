@@ -15,7 +15,8 @@
     <div id="app">
         <app-header :cart="cart" @open-cart="openCart = !openCart"></app-header>
 
-        <cart-drawer :open="openCart" @close="openCart = false" :cart="cart"></cart-drawer>
+        <cart-drawer :open="openCart" @close="openCart = false" :cart="cart" @remove-cart-item="removeCartItem">
+        </cart-drawer>
 
         <div class="bg-white">
             <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">

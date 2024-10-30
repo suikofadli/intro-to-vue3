@@ -32,7 +32,11 @@ app.component("cart-drawer", {
             </div>
             <div class="relative mt-6 flex-1 px-4 sm:px-6">
               <div class="flow-root">
-                <ul role="list" class="-my-6 divide-y divide-gray-200">
+                <div v-show="cart.length === 0">
+                  There is no item in your cart.
+                </div>
+              
+                <ul v-show="cart.length" role="list" class="-my-6 divide-y divide-gray-200">
                   <li class="flex py-6" v-for="item in cart">
                     <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img :src="item.image"
@@ -48,73 +52,20 @@ app.component("cart-drawer", {
                           </h3>
                           <p class="ml-4">{{ item.price }}</p>
                         </div>
-                        <p class="mt-1 text-sm text-gray-500">Salmon</p>
+                        <p class="mt-1 text-sm text-gray-500">{{ item.colorName }}</p>
                       </div>
                       <div class="flex flex-1 items-end justify-between text-sm">
                         <p class="text-gray-500">Qty 1</p>
 
                         <div class="flex">
                           <button type="button"
-                            class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                            class="font-medium text-indigo-600 hover:text-indigo-500"
+                            @click="$emit('remove-cart-item', item.id)"
+                            >Remove</button>
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="flex py-6">
-                    <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                      <img src="https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg"
-                        alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch."
-                        class="h-full w-full object-cover object-center">
-                    </div>
-
-                    <div class="ml-4 flex flex-1 flex-col">
-                      <div>
-                        <div class="flex justify-between text-base font-medium text-gray-900">
-                          <h3>
-                            <a href="#">Medium Stuff Satchel</a>
-                          </h3>
-                          <p class="ml-4">$32.00</p>
-                        </div>
-                        <p class="mt-1 text-sm text-gray-500">Blue</p>
-                      </div>
-                      <div class="flex flex-1 items-end justify-between text-sm">
-                        <p class="text-gray-500">Qty 1</p>
-
-                        <div class="flex">
-                          <button type="button"
-                            class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="flex py-6">
-                    <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                      <img src="https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-03.jpg"
-                        alt="Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls."
-                        class="h-full w-full object-cover object-center">
-                    </div>
-
-                    <div class="ml-4 flex flex-1 flex-col">
-                      <div>
-                        <div class="flex justify-between text-base font-medium text-gray-900">
-                          <h3>
-                            <a href="#">Zip Tote Basket</a>
-                          </h3>
-                          <p class="ml-4">$140.00</p>
-                        </div>
-                        <p class="mt-1 text-sm text-gray-500">White and black</p>
-                      </div>
-                      <div class="flex flex-1 items-end justify-between text-sm">
-                        <p class="text-gray-500">Qty 1</p>
-
-                        <div class="flex">
-                          <button type="button"
-                            class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
                 </ul>
               </div>
             </div>
